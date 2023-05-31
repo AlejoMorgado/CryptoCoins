@@ -31,7 +31,6 @@ h1 {
 .listContainer{
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   height:80%;
   width: 100%;
   text-align: left;
@@ -39,15 +38,17 @@ h1 {
 }
 
 .listContainer::-webkit-scrollbar {
-  display: none; /* Hide the scrollbar for WebKit-based browsers */
+  display: none; 
 }
 
 .imageIcon {
-  height: 2em;
+  height: 2.5em;
+  border-radius: 50%;
+  margin-right: 5px;
 }
 
 .flexDirection {
-  align-items: center;
+  align-items: start;
   margin-top: 20px;
   display: flex;
   justify-content: space-between;
@@ -55,6 +56,7 @@ h1 {
   width: 100%;
 }
 .nameContainer{
+  letter-spacing: 1px;
   margin: 5px;
   height: 25%;
   display: flex;

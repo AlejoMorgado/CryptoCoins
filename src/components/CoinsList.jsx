@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import fetchData from '../helpers/fetchCoinList.js';
 import '../components/CoinList.css';
 import Coin from './Coin';
@@ -16,12 +16,6 @@ const CoinInfo = () => {
     }
   };
 
-  useEffect(() => {
-    if (coinData.length === 0) {
-      fetchCoinData();
-    }
-  }, []);
-
   const handleInputChange = (event) => {
     setSearchInput(event.target.value);
   };
@@ -29,6 +23,11 @@ const CoinInfo = () => {
   const filteredCoins = coinData.filter((coin) =>
     coin.name.toLowerCase().startsWith(searchInput.toLowerCase())
   );
+
+  if (coinData.length === 0) {
+    fetchCoinData();
+  }
+
 
   return (
     <div className='wrapperList'>
@@ -40,7 +39,7 @@ const CoinInfo = () => {
           onChange={handleInputChange}
           className='filterInput'
           placeholder='Enter your search request...'
-        /> 
+        />
       </div>
       <p style={{ marginBottom: '10px' }}>Crypto Currency</p>
       <div className='listContainer'>
