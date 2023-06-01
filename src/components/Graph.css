@@ -1,8 +1,10 @@
 .graphContainer {
+  text-align: left;
   border-radius: 20px;
-  height: 500px;
+  height: 90%;
   background-color: black;
   color: #fff;
+  margin-left: 20px;
 }
 .chart {
   height: 500px;

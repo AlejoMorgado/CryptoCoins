@@ -11,7 +11,8 @@ const Coin = ({ coinElement, setCoin }) => {
           <p id="symbolTag" className='descriptionTags'>{coinElement.symbol}</p>
         </div>
       </div>
-      <p id='priceTag'>{coinElement.current_price}</p>
+      <p id='priceTag'>${coinElement.current_price.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</p>
+
     </div>
   );
 };

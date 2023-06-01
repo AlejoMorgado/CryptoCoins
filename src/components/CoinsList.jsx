@@ -20,9 +20,13 @@ const CoinInfo = ({ setCoinId }) => {
     setSearchInput(event.target.value);
   };
 
-  const filteredCoins = coinData.filter((coin) =>
-    coin.name.toLowerCase().startsWith(searchInput.toLowerCase())
-  );
+  const filteredCoins = coinData.filter((coin) => {
+    const searchTerm = searchInput.toLowerCase();
+    const nameMatch = coin.name.toLowerCase().startsWith(searchTerm);
+    const symbolMatch = coin.symbol.toLowerCase().startsWith(searchTerm);
+    return nameMatch || symbolMatch;
+  });
+  
 
   if (coinData.length === 0) {
     fetchCoinData();
