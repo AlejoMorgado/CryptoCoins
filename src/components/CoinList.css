@@ -1,5 +1,5 @@
 h1 {
-  font-weight:100;
+  font-weight: 100;
 }
 
 .wrapperList {
@@ -16,29 +16,29 @@ h1 {
   display: flex;
   justify-self: baseline;
 }
-.filterContainer{
+.filterContainer {
   text-align: left;
   width: 100%;
   height: 20%;
 }
-.filterInput{
+.filterInput {
   padding: 8px;
   border-style: none;
   width: 90%;
   border-radius: 10px;
-  background-color: rgba(239,241,247,255);
+  background-color: rgba(239, 241, 247, 255);
 }
-.listContainer{
+.listContainer {
   display: flex;
   flex-direction: column;
-  height:80%;
+  height: 80%;
   width: 100%;
   text-align: left;
   overflow: auto;
 }
 
 .listContainer::-webkit-scrollbar {
-  display: none; 
+  display: none;
 }
 
 .imageIcon {
@@ -47,7 +47,7 @@ h1 {
   margin-right: 5px;
 }
 
-.flexDirection {
+.coinCard {
   align-items: start;
   margin-top: 20px;
   display: flex;
@@ -55,7 +55,7 @@ h1 {
   height: 12%;
   width: 100%;
 }
-.nameContainer{
+.descriptionTags {
   letter-spacing: 1px;
   margin: 5px;
   height: 25%;
@@ -65,10 +65,30 @@ h1 {
   justify-content: center;
 }
 
-.leftSide {
+.leftSideWrapper {
   text-align: left;
   display: flex;
   justify-content: space-between;
   height: 100%;
   align-items: center;
+}
+.leftSideContainer {
+  text-align: left;
+}
+
+#nameTag {
+  font-weight: bolder;
+  margin-top: 0px;
+}
+#symbolTag {
+  font-weight: lighter;
+  color: rgba(136, 136, 136, 255);
+}
+
+#priceTag {
+  font-weight: bolder;
+  margin: 0px;
+}
+#cryptoTag {
+  margin-bottom: 10px;
 }

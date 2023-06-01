@@ -3,7 +3,7 @@ import fetchData from '../helpers/fetchCoinList.js';
 import '../components/CoinList.css';
 import Coin from './Coin';
 
-const CoinInfo = () => {
+const CoinInfo = ({ setCoinId }) => {
   const [coinData, setCoinData] = useState([]);
   const [searchInput, setSearchInput] = useState('');
 
@@ -28,7 +28,6 @@ const CoinInfo = () => {
     fetchCoinData();
   }
 
-
   return (
     <div className='wrapperList'>
       <div className='filterContainer'>
@@ -41,12 +40,12 @@ const CoinInfo = () => {
           placeholder='Enter your search request...'
         />
       </div>
-      <p style={{ marginBottom: '10px' }}>Crypto Currency</p>
+      <p id='cryptoTag'>Crypto Currency</p>
       <div className='listContainer'>
         {searchInput ? (
-          filteredCoins.map((coin) => <Coin coin={coin} key={coin.id} />)
+          filteredCoins.map((coin) => <Coin coinElement={coin} key={coin.id} />)
         ) : (
-          coinData.map((coin) => <Coin coin={coin} key={coin.id} />)
+          coinData.map((coin) => <Coin setCoinId={setCoinId} coinElement={coin} key={coin.id} />)
         )}
       </div>
     </div>
