@@ -1,4 +1,8 @@
 .graphContainer {
+  display: flex;
+  width: 60%;
+  align-items: center;
+  justify-content: space-evenly;
   text-align: left;
   border-radius: 20px;
   height: 90%;
@@ -6,7 +10,18 @@
   color: #fff;
   margin-left: 20px;
 }
+.graphWrapper{
+  width:  80%;
+}
 .chart {
-  height: 500px;
   width: 800px;
+  height: 1000px;
+}
+.graphTitle{
+  margin: 0px;
+ font-size: 50px;
+ font-weight: 200;
+}
+.priceText{
+  align-self: flex-end;
 }
