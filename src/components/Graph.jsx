@@ -3,6 +3,20 @@ import { Bar } from 'react-chartjs-2';
 import '../components/Graph.css';
 
 function ChartDisplay({ coinId, displayName, displayPrice }) {
+  const calculateAverage = () => {
+    if (!coinId || coinId.length === 0) {
+        return 0;
+    }
+
+    let sum = 0;
+    for (let i = 0; i < coinId.length; i++) {
+        sum += coinId[i][1];
+    }
+
+    return sum / coinId.length;
+};
+
+const averageValue = calculateAverage();
 
   return (
     <div className='graphContainer'>
@@ -18,6 +32,16 @@ function ChartDisplay({ coinId, displayName, displayPrice }) {
                 ),
                 datasets: [
                   {
+                    type: 'line',
+                    data: coinId.prices.map(([, price]) => averageValue),
+                    borderColor: '#C9EC4Cff',
+                    borderWidth: 3,
+                    borderDash: [3, 3],
+                    fill: false,
+                    pointRadius: 0,
+                    order: 0,
+                },
+                  {
                     label: displayName,
                     data: coinId.prices.map(([, price]) => price),
                     borderRadius: 5,
@@ -26,6 +50,7 @@ function ChartDisplay({ coinId, displayName, displayPrice }) {
                     hoverBackgroundColor: 'rgba(194,238,10,255)',
                     hoverBorderColor: 'rgba(194,238,10,255)',
                     fill: true,
+                    order:1,
                   },
                 ],
               }}
@@ -35,17 +60,11 @@ function ChartDisplay({ coinId, displayName, displayPrice }) {
                     ticks: {
                       display: false,
                     },
-                    grid: {
-                      borderDash: [2, 4],
-                      beginAtZero: true,
-                      ticks: {
-                        display: false,
-                      },
-                      color: 'rgba(194,238,10,255)',
-                    },
+                    beginAtZero: false
                   },
                   x: {
                     position: 'top',
+  
                   },
                 },
               }}

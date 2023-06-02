@@ -1,21 +1,21 @@
 import React, { useState } from 'react';
 import fetchData from '../helpers/fetchCoinList.js';
-import coinData from '../resources/listCoins.json';
+// import coinData from '../resources/listCoins.json';
 import '../components/CoinList.css';
 import Coin from './Coin';
 
 const CoinInfo = ({ setCoinId, setCoinName, setCoinPrice }) => {
-  // const [coinData, setCoinData] = useState([]);
+  const [coinData, setCoinData] = useState([]);
   const [searchInput, setSearchInput] = useState('');
 
-  // const fetchCoinData = async () => {
-  //   try {
-  //     const data = await fetchData();
-  //     setCoinData(data);
-  //   } catch (error) {
-  //     console.error('Error:', error);
-  //   }
-  // };
+  const fetchCoinData = async () => {
+    try {
+      const data = await fetchData();
+      setCoinData(data);
+    } catch (error) {
+      console.error('Error:', error);
+    }
+  };
 
   const handleInputChange = (event) => {
     setSearchInput(event.target.value);
@@ -29,9 +29,9 @@ const CoinInfo = ({ setCoinId, setCoinName, setCoinPrice }) => {
   });
   
 
-  // if (coinData.length === 0) {
-  //   fetchCoinData();
-  // }
+  if (coinData.length === 0) {
+    fetchCoinData();
+  }
 
   return (
     <div className='wrapperList'>
