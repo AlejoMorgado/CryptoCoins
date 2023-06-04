@@ -32,16 +32,6 @@ const averageValue = calculateAverage();
                 ),
                 datasets: [
                   {
-                    type: 'line',
-                    data: coinId.prices.map(([, price]) => averageValue),
-                    borderColor: '#C9EC4Cff',
-                    borderWidth: 3,
-                    borderDash: [3, 3],
-                    fill: false,
-                    pointRadius: 0,
-                    order: 0,
-                },
-                  {
                     label: displayName,
                     data: coinId.prices.map(([, price]) => price),
                     borderRadius: 5,
@@ -57,14 +47,21 @@ const averageValue = calculateAverage();
               options={{
                 scales: {
                   y: {
+                    grid:{
+                      drawBorder: false,
+                      color: 'rgba(194,238,10,255)'
+                    },
                     ticks: {
                       display: false,
                     },
                     beginAtZero: false
                   },
                   x: {
+                    grid: {
+                      drawBorder: false,
+                      display: false,
+                    },
                     position: 'top',
-  
                   },
                 },
               }}
