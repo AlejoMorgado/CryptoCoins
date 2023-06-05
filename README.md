@@ -5,12 +5,12 @@ Crypt Coin is a React-based web application that allows users to fetch and track
 
 ## Features
 
--Fetches data from the CoinGecko API to provide up-to-date information on cryptocurrencies.
--Displays a list of crypto coins with their current prices.
--Provides a search functionality to easily find specific coins.
--Clicking on a crypto coin shows a graph that illustrates its daily prices over the last 30 days.
--Offers interactive features on the graph, such as zooming and panning.
--Responsive design to ensure a seamless experience across different devices.
+- Fetches data from the CoinGecko API to provide up-to-date information on cryptocurrencies.
+- Displays a list of crypto coins with their current prices.
+- Provides a search functionality to easily find specific coins.
+- Clicking on a crypto coin shows a graph that illustrates its daily prices over the last 30 days.
+- Offers interactive features on the graph, such as zooming and panning.
+- Responsive design to ensure a seamless experience across different devices.
 
 ## Technologies Used
 
