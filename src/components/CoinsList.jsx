@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import fetchData from '../helpers/fetchCoinList.js';
-// import coinData from '../resources/listCoins.json';
 import '../components/CoinList.css';
+import image from '../images/search-icon.png'
 import Coin from './Coin';
 
 const CoinInfo = ({ setCoinId, setCoinName, setCoinPrice }) => {
@@ -14,7 +14,7 @@ const CoinInfo = ({ setCoinId, setCoinName, setCoinPrice }) => {
       setCoinData(data);
     } catch (error) {
       console.error('Error:', error);
-    }
+    } 
   };
 
   const handleInputChange = (event) => {
@@ -27,7 +27,7 @@ const CoinInfo = ({ setCoinId, setCoinName, setCoinPrice }) => {
     const symbolMatch = coin.symbol.toLowerCase().startsWith(searchTerm);
     return nameMatch || symbolMatch;
   });
-  
+
 
   if (coinData.length === 0) {
     fetchCoinData();
@@ -37,13 +37,19 @@ const CoinInfo = ({ setCoinId, setCoinName, setCoinPrice }) => {
     <div className='wrapperList'>
       <div className='filterContainer'>
         <h1>Control Panel</h1>
-        <input
-          type='text'
-          value={searchInput}
-          onChange={handleInputChange}
-          className='filterInput'
-          placeholder='Enter your search request...'
-        />
+        <div className="filter">
+          <input
+            type="text"
+            value={searchInput}
+            onChange={handleInputChange}
+            className="filterInput"
+            placeholder="Enter your search request..."
+          />
+          <button className="searchButton" >
+            <img className="searchIcon" src={image} alt="Search" />
+          </button>
+        </div>
+
       </div>
       <p id='cryptoTag'>Crypto Currency</p>
       <div className='listContainer'>

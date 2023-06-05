@@ -22,13 +22,24 @@ h1 {
   height: 20%;
 }
 .filterInput {
-  padding: 8px;
+  padding: 15px;
   border-style: none;
   width: 90%;
-  border-radius: 10px;
+  border-radius: 50px;
   background-color: rgba(239, 241, 247, 255);
 }
+.filter{
+  padding: 5px;
+  display: flex;
+  background-color:rgba(239, 241, 247, 255);
+  border-radius: 50px;
+}
+.searchButton {
+  border-style: none;
+  border-radius: 50px;
+}
 .listContainer {
+  padding: 0 2vw 0 0;
   position: relative;
   display: flex;
   flex-direction: column;
@@ -42,8 +53,8 @@ h1 {
   position: absolute;
   top: 0;
   left: 0;
-  width: 100%; /* Adjust this percentage as needed */
-  height: 0.5px; /* Adjust the thickness of the border */
+  width: 100%; 
+  height: 0.5px; 
   background-color: rgba(136, 136, 136, 255);
 }
 
@@ -52,6 +63,9 @@ h1 {
   border-radius: 50%;
   margin-right: 5px;
 }
+.searchIcon{
+  height: 2em;
+  }
 
 .coinCard {
   align-items: start;
@@ -87,6 +101,7 @@ h1 {
     border-top: 1px solid #000;
   }
 }
+
 
 #nameTag {
   font-weight: bolder;
