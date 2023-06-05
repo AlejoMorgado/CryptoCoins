@@ -1,4 +1,4 @@
-# Crypt Coins
+# Crypto Coins
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 Crypt Coin is a React-based web application that allows users to fetch and track the prices of various cryptocurrencies using the CoinGecko API. This project provides a user-friendly interface where users can view a list of crypto coins and click on any coin to visualize its price history over the last 30 days through an interactive graph.
@@ -23,10 +23,10 @@ The Crypt Coin Tracker project utilizes the following technologies:
 ## Usage
 
 1.Clone the repository:
-### `git clone https://github.com/your-username/crypt-coin-tracker.git`
+### `git clone https://github.com/AlejoMorgado/CryptoCoins.git`
 
 2.Navigate to the project directory:
-### `cd crypt-coin-tracker`
+### `cd CryptoCoins`
 
 3.Install the required dependencies:
 ### `npm install`
