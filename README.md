@@ -27,13 +27,13 @@ Chart.js: A JavaScript library for creating interactive and visually appealing g
 ### `git clone https://github.com/your-username/crypt-coin-tracker.git`
 
 2.Navigate to the project directory:
-###`cd crypt-coin-tracker`
+### `cd crypt-coin-tracker`
 
 3.Install the required dependencies:
-###`npm install`
+### `npm install`
 
 4.Start the development server:
-###`npm start`
+### `npm start`
 
 5.Open your preferred web browser and visit http://localhost:3000 to access the application.
 
