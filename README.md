@@ -14,12 +14,33 @@ Crypto Coin is a React-based web application that allows users to fetch and trac
 
 ## Technologies Used
 
-The Crypt Coin Tracker project utilizes the following technologies:
+The Crypto Coins project utilizes the following technologies:
 
 - React: A JavaScript library for building user interfaces.
 - HTML5 and CSS3: Used for structuring and styling the web application.
 - CoinGecko API: Provides the necessary data for fetching and tracking cryptocurrency prices.
 - Chart.js: A JavaScript library for creating interactive and visually appealing graphs.
+
+## Dependencies and Libraries Used
+
+The Crypto Coins project utilizes the following dependencies and libraries:
+
+- **@testing-library/jest-dom** (^5.16.5): Provides custom Jest matchers for more advanced DOM element matching.
+- **@testing-library/react** (^13.4.0): Provides utilities for testing React components.
+- **@testing-library/user-event** (^13.5.0): Simulates user events for testing purposes.
+- **chart.js** (^4.3.0): A JavaScript library for creating interactive and customizable charts and graphs.
+- **chartjs-adapter-date-fns** (^3.0.0): A date adapter for Chart.js that uses date-fns library for date manipulation.
+- **chartjs-adapter-moment** (^1.0.1): A date adapter for Chart.js that uses moment.js library for date manipulation.
+- **chartjs-plugin-annotation** (^3.0.1): A plugin for Chart.js that allows adding annotations to charts.
+- **moment** (^2.29.4): A JavaScript library for parsing, manipulating, and formatting dates.
+- **react** (^18.2.0): A JavaScript library for building user interfaces.
+- **react-chartjs-2** (^5.2.0): A React wrapper for Chart.js to easily create charts and graphs.
+- **react-dom** (^18.2.0): Provides the rendering and updating logic for React components.
+- **react-scripts** (5.0.1): A set of scripts and configuration used by Create React App to run the development server and build the project.
+- **web-vitals** (^2.1.4): A library for measuring and reporting web performance metrics.
+
+These dependencies and libraries are managed using npm, the Node package manager.
+
 
 ## Usage
 
