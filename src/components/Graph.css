@@ -11,12 +11,35 @@
   margin-left: 20px;
 }
 .graphWrapper{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 90%;
   width:  82%;
 }
 .graphTitle{
   margin: 0px;
  font-size: 50px;
  font-weight: 200;
+}
+.headerSection{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+.introductionContainer{
+  width: 70%;
+}
+.nameText{
+  color: black;
+  font-weight: bold;
+  background-color: rgba(194,238,10,255);
+  height: 5vh;
+  width: 9vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 2rem;
 }
 .priceText{
   align-self: flex-end;
@@ -28,6 +51,7 @@
 .graphPriceContainer{
   display: flex;
   align-items: center;
-  justify-content:end;
-  width: 100%;
+  justify-content:flex-start;
+  width: 90%;
+  height: 60%;
 }

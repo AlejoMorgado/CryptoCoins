@@ -8,7 +8,7 @@ function ChartDisplay({ coinId, displayName, displayPrice }) {
 
   useEffect(() => {
     if (!coinId || !coinId.prices) {
-      return; // Return early if coinId or prices is undefined
+      return;
     }
 
     const chartInstance = chartRef.current?.chartInstance;
@@ -19,13 +19,20 @@ function ChartDisplay({ coinId, displayName, displayPrice }) {
   }, [coinId]);
 
   if (!coinId || !coinId.prices) {
-    return null; // Render null or handle the case when coinId or prices is undefined
+    return null;
   }
 
   const prices = coinId.prices.map(([, price]) => price);
   const averagePrice = prices.reduce((total, price) => total + price, 0) / prices.length;
 
   const options = {
+    plugins: {
+      legend: {
+        display: false,
+      }
+    },
+    responsive: true,
+    maintainAspectRatio: false,
     scales: {
       y: {
         ticks: {
@@ -66,16 +73,15 @@ function ChartDisplay({ coinId, displayName, displayPrice }) {
         borderDash: [10, 10],
       },
       {
-        label: '',
+        label: 'Average',
         data: Array(prices.length).fill(averagePrice),
-        type: 'scatter',
+        type: 'line',
+        borderColor: '#C9EC4Cff',
         borderWidth: 2,
-        backgroundColor: 'rgba(194,238,10,255)',
+        borderDash: [2, 2],
+        pointRadius: 0,
         fill: false,
         order: 1,
-        legend: {
-          display: false
-        }
       },
     ],
   }
@@ -83,7 +89,15 @@ function ChartDisplay({ coinId, displayName, displayPrice }) {
   return (
     <div className='graphContainer'>
       <div className='graphWrapper'>
-        <h2 className='graphTitle'>Sales Activity</h2>
+        <div className='headerSection'>
+          <div className='introductionContainer'>
+            <h2 className='graphTitle'>Sales Activity</h2>
+            <p>Here you can compare sales channel to determine the most effective channels and develop a sales strategy based on this data.</p>
+          </div>
+          <div className='nameText'>
+            <p>{displayName}</p>
+          </div>
+        </div>
         <div className='graphPriceContainer' >
           <Bar ref={chartRef} className='chart' data={dataConfig} options={options} />
           <p className='priceText'>${displayPrice.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }).replace('.', ',')} USD</p>
