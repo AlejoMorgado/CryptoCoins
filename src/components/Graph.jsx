@@ -8,7 +8,7 @@ function ChartDisplay({ coinId, displayName, displayPrice }) {
 
   useEffect(() => {
     if (!coinId || !coinId.prices) {
-      return; // Return early if coinId or prices is undefined
+      return; 
     }
 
     const chartInstance = chartRef.current?.chartInstance;
@@ -19,7 +19,7 @@ function ChartDisplay({ coinId, displayName, displayPrice }) {
   }, [coinId]);
 
   if (!coinId || !coinId.prices) {
-    return null; // Render null or handle the case when coinId or prices is undefined
+    return null; 
   }
 
   const prices = coinId.prices.map(([, price]) => price);
