@@ -1,8 +1,0 @@
-  {coinData.map((coin) => (
-      <div key={coin.id}>
-        <h2>{coin.name}</h2>
-        <p>{coin.symbol}</p>
-        <p>{coin.current_price}</p>
-        <p>{coin.id}</p>
-      </div>
-    ))}
