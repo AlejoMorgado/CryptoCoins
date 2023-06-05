@@ -88,20 +88,22 @@ function ChartDisplay({ coinId, displayName, displayPrice }) {
 
   return (
     <div className='graphContainer'>
-      <div className='graphWrapper'>
+      <div className='graphLeftSide'>
         <div className='headerSection'>
           <div className='introductionContainer'>
             <h2 className='graphTitle'>Sales Activity</h2>
-            <p>Here you can compare sales channel to determine the most effective channels and develop a sales strategy based on this data.</p>
-          </div>
-          <div className='nameText'>
-            <p>{displayName}</p>
+            <p className='descriptionText'>Here you can compare sales channel to determine the most effective channels and develop a sales strategy based on this data.</p>
           </div>
         </div>
         <div className='graphPriceContainer' >
           <Bar ref={chartRef} className='chart' data={dataConfig} options={options} />
-          <p className='priceText'>${displayPrice.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }).replace('.', ',')} USD</p>
         </div>
+      </div>
+      <div className='graphRightSide'>
+        <div className='nameText'>
+          <p>{displayName}</p>
+        </div>
+        <p className='priceText'>${displayPrice.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }).replace('.', ',')} USD</p>
       </div>
     </div>
   );

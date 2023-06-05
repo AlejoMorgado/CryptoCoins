@@ -10,12 +10,20 @@
   color: #fff;
   margin-left: 20px;
 }
-.graphWrapper{
+.graphLeftSide{
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   height: 90%;
-  width:  82%;
+  width:  70%;
+}
+.graphRightSide{
+  height: 80%;
+  width: 10%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: space-between;
 }
 .graphTitle{
   margin: 0px;
@@ -35,9 +43,10 @@
   font-weight: bold;
   background-color: rgba(194,238,10,255);
   height: 5vh;
-  width: 9vw;
+  width: 10vw;
   display: flex;
   align-items: center;
+  justify-self: baseline;
   justify-content: center;
   border-radius: 2rem;
 }
@@ -45,13 +54,17 @@
   align-self: flex-end;
   font-size: 1.5rem;
   font-weight: bold;
-  width: 10%;
 }
 
 .graphPriceContainer{
   display: flex;
   align-items: center;
   justify-content:flex-start;
-  width: 90%;
+  width: 42vw;
   height: 60%;
+}
+
+.descriptionText {
+  color:  #727272;
+  font-size:small;
 }
