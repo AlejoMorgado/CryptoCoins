@@ -1,66 +1,75 @@
-import React, { useState } from 'react';
-import fetchData from '../helpers/fetchCoinList.js';
-import '../components/CoinList.css';
-import image from '../images/search-icon.png'
-import Coin from './Coin.jsx';
+import React from "react";
+import Coin from "./Coin.jsx";
+import image from "../images/search-icon.png";
+import "../components/CoinList.css";
 
-const CoinInfo = ({ setCoinId, setCoinName, setCoinPrice }) => {
-  const [coinData, setCoinData] = useState([]);
-  const [searchInput, setSearchInput] = useState('');
-
-  const fetchCoinData = async () => {
-    try {
-      const data = await fetchData();
-      setCoinData(data);
-    } catch (error) {
-      console.error('Error:', error);
-    } 
-  };
-
+const CoinList = ({
+  setCoinId,
+  setCoinList,
+  setCurrentCoin,
+  setSearchTerm,
+  searchValue,
+  searchData,
+}) => {
   const handleInputChange = (event) => {
-    setSearchInput(event.target.value);
+    setSearchTerm(event.target.value);
   };
 
-  const filteredCoins = coinData.filter((coin) => {
-    const searchTerm = searchInput.toLowerCase();
-    const nameMatch = coin.name.toLowerCase().startsWith(searchTerm);
-    const symbolMatch = coin.symbol.toLowerCase().startsWith(searchTerm);
-    return nameMatch || symbolMatch;
-  });
+  const filteredCoins =
+    searchData && searchData.coins && Array.isArray(searchData.coins)
+      ? searchData.coins.filter((coin) => {
+          const searchTerm = searchValue.toLowerCase();
+          const nameMatch =
+            coin.name && coin.name.toLowerCase().startsWith(searchTerm);
+          const symbolMatch =
+            coin.symbol &&
+            coin.symbol.toLowerCase().startsWith(searchTerm);
 
+          const isCoinInList = setCoinList.some(
+            (setCoin) => setCoin.id === coin.id
+          );
 
-  if (coinData.length === 0) {
-    fetchCoinData();
-  }
+          if (isCoinInList) {
+            const matchedCoin = setCoinList.find(
+              (setCoin) => setCoin.id === coin.id
+            );
+            coin.current_price = matchedCoin.current_price;
+          }
+
+          return (nameMatch || symbolMatch) && isCoinInList;
+        })
+      : [];
 
   return (
-    <div className='wrapperList'>
-      <div className='filterContainer'>
+    <div className="wrapperList">
+      <div className="filterContainer">
         <h1>Control Panel</h1>
         <div className="filter">
           <input
             type="text"
-            value={searchInput}
+            value={searchValue}
             onChange={handleInputChange}
             className="filterInput"
             placeholder="Enter your search request..."
           />
-          <button className="searchButton" >
+          <button className="searchButton">
             <img className="searchIcon" src={image} alt="Search" />
           </button>
         </div>
-
       </div>
-      <p id='cryptoTag'>Crypto Currency</p>
-      <div className='listContainer'>
-        {searchInput ? (
-          filteredCoins.map((coin) => <Coin setCoinId={setCoinId} setCoinName={setCoinName} coinElement={coin} setCoinPrice={setCoinPrice} key={coin.id} />)
-        ) : (
-          coinData.map((coin) => <Coin setCoinId={setCoinId} setCoinName={setCoinName} setCoinPrice={setCoinPrice} coinElement={coin} key={coin.id} />)
-        )}
+      <p id="cryptoTag">Crypto Currency</p>
+      <div className="listContainer">
+        {filteredCoins.map((coin) => (
+          <Coin
+            setCoinId={setCoinId}
+            coinElement={coin}
+            key={coin.id}
+            setCurrentCoin={setCurrentCoin}
+          />
+        ))}
       </div>
     </div>
   );
 };
 
-export default CoinInfo;
+export default CoinList;

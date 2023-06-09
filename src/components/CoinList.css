@@ -71,12 +71,14 @@ h1 {
   }
 
 .coinCard {
+  border-radius: 1rem;
+  padding: 8px;
   align-items: start;
   margin-top: 20px;
   display: flex;
   justify-content: space-between;
   height: 12%;
-  width: 100%;
+  width: 95%;
   transition: transform 0.3s, box-shadow 0.3s;
   cursor: pointer;
 }

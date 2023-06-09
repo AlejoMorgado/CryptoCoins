@@ -1,16 +1,12 @@
-import React, { useEffect, useRef } from 'react';
-import { Bar } from 'react-chartjs-2';
-import 'chart.js/auto';
-import '../components/Graph.css';
+import React, { useEffect, useRef } from "react";
+import { Bar } from "react-chartjs-2";
+import "chart.js/auto";
+import "../components/Graph.css";
 
-function ChartDisplay({ coinId, displayName, displayPrice }) {
+const Graph = ({ coinId, currentCoin }) => {
   const chartRef = useRef(null);
 
   useEffect(() => {
-    if (!coinId || !coinId.prices) {
-      return;
-    }
-
     const chartInstance = chartRef.current?.chartInstance;
 
     if (chartInstance) {
@@ -22,14 +18,15 @@ function ChartDisplay({ coinId, displayName, displayPrice }) {
     return null;
   }
 
-  const prices = coinId.prices.map(([, price]) => price);
-  const averagePrice = prices.reduce((total, price) => total + price, 0) / prices.length;
+  const prices = coinId.prices.map(([timestamp, price]) => price);
+  const averagePrice =
+    prices.reduce((total, price) => total + price, 0) / prices.length;
 
   const options = {
     plugins: {
       legend: {
         display: false,
-      }
+      },
     },
     responsive: true,
     maintainAspectRatio: false,
@@ -42,18 +39,18 @@ function ChartDisplay({ coinId, displayName, displayPrice }) {
           drawBorder: false,
           display: false,
         },
-        beginAtZero: false
+        beginAtZero: false,
       },
       x: {
         grid: {
           drawBorder: false,
-          color: 'rgba(194,238,10,255)',
-          display: false
+          color: "rgba(194,238,10,255)",
+          display: false,
         },
-        position: "top"
+        position: "top",
       },
     },
-  }
+  };
 
   const dataConfig = {
     labels: coinId.prices.map(([timestamp]) =>
@@ -61,22 +58,22 @@ function ChartDisplay({ coinId, displayName, displayPrice }) {
     ),
     datasets: [
       {
-        label: displayName,
+        label: "",
         data: prices,
         borderRadius: 8,
-        backgroundColor: 'rgba(104,107,127,255)',
-        borderColor: 'rgba(104,107,127,255)',
-        hoverBackgroundColor: 'rgba(194,238,10,255)',
-        hoverBorderColor: 'rgba(194,238,10,255)',
+        backgroundColor: "rgba(104,107,127,255)",
+        borderColor: "rgba(104,107,127,255)",
+        hoverBackgroundColor: "rgba(194,238,10,255)",
+        hoverBorderColor: "rgba(194,238,10,255)",
         fill: true,
         order: 2,
         borderDash: [10, 10],
       },
       {
-        label: 'Average',
+        label: "Average",
         data: Array(prices.length).fill(averagePrice),
-        type: 'line',
-        borderColor: '#C9EC4Cff',
+        type: "line",
+        borderColor: "#C9EC4Cff",
         borderWidth: 2,
         borderDash: [2, 2],
         pointRadius: 0,
@@ -84,29 +81,37 @@ function ChartDisplay({ coinId, displayName, displayPrice }) {
         order: 1,
       },
     ],
-  }
+  };
 
   return (
-    <div className='graphContainer'>
-      <div className='graphLeftSide'>
-        <div className='headerSection'>
-          <div className='introductionContainer'>
-            <h2 className='graphTitle'>Sales Activity</h2>
-            <p className='descriptionText'>Here you can compare sales channel to determine the most effective channels and develop a sales strategy based on this data.</p>
+    <div className="graphContainer">
+      <div className="graphLeftSide">
+        <div className="headerSection">
+          <div className="introductionContainer">
+            <h2 className="graphTitle">Sales Activity</h2>
+            <p className="descriptionText">
+              Here you can compare sales channel to determine the most effective
+              channels and develop a sales strategy based on this data.
+            </p>
           </div>
         </div>
-        <div className='graphPriceContainer' >
-          <Bar ref={chartRef} className='chart' data={dataConfig} options={options} />
+        <div className="graphPriceContainer">
+          <Bar
+            ref={chartRef}
+            className="chart"
+            data={dataConfig}
+            options={options}
+          />
         </div>
       </div>
-      <div className='graphRightSide'>
-        <div className='nameText'>
-          <p>{displayName}</p>
+      <div className="graphRightSide">
+        <div className="nameText">
+          <p>{currentCoin.name}</p>
         </div>
-        <p className='priceText'>${displayPrice.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }).replace('.', ',')} USD</p>
+        <p className='priceText'>${currentCoin.price.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }).replace('.', ',')} USD</p>
       </div>
     </div>
   );
-}
+};
 
-export default ChartDisplay;
+export default Graph;
